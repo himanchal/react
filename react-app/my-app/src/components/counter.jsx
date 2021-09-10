@@ -41,7 +41,7 @@ class Counter extends React.Component {
 
     formatCount(){
         const {count} = this.state;
-        return count === 0 ? 'Zero' : count; //we can also return a jsx expression <h1>Zero</h1>
+        return count === 0 ? 'Zero' : count; //we can also return a jsx expression like <h1>Zero</h1>
     }
 }
  
