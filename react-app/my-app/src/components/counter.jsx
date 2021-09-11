@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Counter extends React.Component {
     state = {
-        count: 0,
+        value: this.props.value,
         imageUrl: "https://picsum.photos/300",
         tags: ['tag1', 'tag2', 'tag3']
     }; // it's a special property that includes any data that this component needs.
@@ -13,17 +13,15 @@ class Counter extends React.Component {
     }
     handleIncrement = () => { //arrow function to bind event handlers
         console.log('Increment clicked', this);
-        this.setState({ count: this.state.count + 1 });
+        this.setState({ value: this.state.value + 1 });
     }
     render() { 
         return (
             <React.Fragment>
                 {/* <img src={this.state.imageUrl} alt="" /> */}
-
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span> 
                 <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">Increment</button>
                 <div>{this.renderTagsConditionally()}</div>
-
             </React.Fragment>
         );
          //jsx expression, it's not a string 
@@ -35,12 +33,12 @@ class Counter extends React.Component {
     }
     getBadgeClasses() {
         let classes = "badge m-2 badge-";
-        classes += this.state.count === 0 ? "warning" : "primary";
+        classes += this.state.value === 0 ? "warning" : "primary";
         return classes;
     }
 
     formatCount(){
-        const {count} = this.state;
+        const {value: count} = this.state;
         return count === 0 ? 'Zero' : count; //we can also return a jsx expression like <h1>Zero</h1>
     }
 }
