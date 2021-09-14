@@ -12,6 +12,23 @@ class App extends Component{
             {id: 4, value: 0}
         ]
     }
+    //life cycle hooks
+    //mounting phase
+    constructor(props){ //this constructor only called once, when an instance of class is created
+        super(props); //calling the constructor of base class. Why?
+        console.log('App - contructor', this.props);
+        //state can be set here this.state = this.props.something;
+    }
+
+    componentDidMount(){ //called after the component is rendered into the DOM
+        //best place to make ajax calls
+        console.log('App - mounterd');
+        this.setState({
+
+        });
+    }
+    
+
 
     handleDelete = counterId => { //handling the event
         console.log('event handler called', counterId);
@@ -36,6 +53,7 @@ class App extends Component{
     }
 
     render(){
+        console.log('App - rendered');
         return (
             <div>
                 <NavBar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>
